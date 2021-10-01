@@ -41,9 +41,9 @@ def main():
         football.append(int(input("Enter Roll numbers: ")))
 
     print(f"Play's both Cricket and Badminton:{union(criket, badminton)} ")
-    print(f"Play's Cricket or batminton but not both:{eiter_or(criket, badminton)} ")
-    print(f"Play's neitner cricket nor football:{minus(minus(badminton, criket), football)} ")
-    print(f"Cricket and football but not batminton:{minus(intersect(criket, football), badminton)} ")
+    print(f"Play's Cricket or Batminton but not both:{eiter_or(criket, badminton)} ")
+    print(f"Play's neitner Cricket nor Football:{minus(minus(badminton, criket), football)} ")
+    print(f"Play's Cricket and Football but not Batminton:{minus(intersect(criket, football), badminton)} ")
 
 main()
  
