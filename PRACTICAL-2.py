@@ -5,6 +5,7 @@ def union(criket, badminton):
             L.append(i)
     return L
 
+
 def intersection(criket,badminton):
     L = []
     for i in criket:
@@ -14,7 +15,7 @@ def intersection(criket,badminton):
 
 def eiter_or(criket, badminton):
     u = union(criket, badminton)
-    i = intersect(criket, badminton)
+    i = intersection(criket, badminton)
     for value in i:
         u.remove(value)
     return u
@@ -40,10 +41,10 @@ def main():
     for _ in range(int(input("How many want to play football: "))):
         football.append(int(input("Enter Roll numbers: ")))
 
-    print(f"Play's both Cricket and Badminton:{union(criket, badminton)} ")
-    print(f"Play's Cricket or Batminton but not both:{eiter_or(criket, badminton)} ")
-    print(f"Play's neitner Cricket nor Football:{minus(minus(badminton, criket), football)} ")
-    print(f"Play's Cricket and Football but not Batminton:{minus(intersect(criket, football), badminton)} ")
+    print(f"Play's both Cricket and Badminton:{intersection(criket, badminton)} ")
+    print(f"Play's Cricket or batminton but not both:{eiter_or(criket, badminton)} ")
+    print(f"Play's neitner cricket nor football:{minus(minus(badminton, criket), football)} ")
+    print(f"Cricket and football but not batminton:{minus(intersection(criket, football), badminton)} ")
 
 main()
  
