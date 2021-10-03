@@ -1,49 +1,60 @@
-def union(cricket, badminton):                            
-    L = list(cricket)  
-    for i in badminton:
-        if i not in cricket:
-            L.append(i)
-    return L
+def union(c,b):
+  l=list(c)
+  for i in  b  :
+    if i not in c  :
+      l.append(i)
+  return l
 
-def intersection(cricket,badminton):
-    L = []
-    for i in cricket:
-        if i in badminton:
-            L.append(i) 
-    return L
+def intersection(c,b):
+  l=[]
+  for i in c:
+    if i in b:
+      l.append(i)
+  return l 
 
-def neither_or(cricket, badminton):
-    u = union(cricket, badminton)
-    i = intersection(cricket, badminton)
-    for value in i:
-        u.remove(value)
-    return u
+def either(c,b):
+  u=union(c,b)
+  i=intersection(c,b)
+  for value in u:
+    if value in i:
+      u.remove(value)
+  return u   
 
-def minus(cricket, badminton):
-    L = list(cricket)
-    for i in badminton:
-        if i in L:
-            L.remove(i)
-    return L
+def neither(c,b,team):
+  l=[]
+  for i in team:
+    if i not in c:
+        if i not in b:
+            l.append(i)
+  return l
 
-def main():
-    cricket= []
-    badminton = []
-    football = []
+def inter(c,f,b):
+    l=[]
+    for i in c:
+        if i in f:
+            if i not in b:
+                l.append(i)
+    return l            
 
-    for _ in range(int(input("How many want to play cricket: "))):
-        cricket.append(int(input("Enter Roll numbers: ")))
-        
-    for _ in range(int(input("How many want to play batminton: "))):
-        badminton.append(int(input("Enter Roll numbers: ")))
+def cls():
+  team=[]
+  c=[]
+  b=[]
+  f=[]
 
-    for _ in range(int(input("How many want to play football: "))):
-        football.append(int(input("Enter Roll numbers: ")))
+  for _ in range(int(input("Enter total std in class:"))):
+    team.append(int(input("Enter std: ")))
+  for _ in range(int(input("Enter std playing criket:"))):
+    c.append(int(input("Enter std: ")))
+  for _ in range(int(input("Enter std playing badminton:"))):
+    b.append(int(input("Enter std: ")))
+  for _ in range(int(input("Enter std playing football:"))):
+    f.append(int(input("Enter std: ")))
 
-    print(f" Play's both Cricket and Badminton: {intersection(cricket, badminton)} ")
-    print(f" Play's Cricket or Badminton but not both: {neither_or(cricket, badminton)} ")
-    print(f" Play's neither Cricket nor Badminton: {minus(minus(badminton, cricket), football)} ")
-    print(f" Cricket and Football but not Badminton: {minus(intersection(cricket, football), badminton)} ")
-
-main()
- 
+  print(f"The std who plays both c n b:{intersection(c,b)}")
+  print(f"The std who plays either c n b but not both:{either(c,b)}")
+  print(f"The std who plays neither c or b :{neither(c,b,team)}")
+  print(f"The std who plays both c n f but not b :{inter(c,f,b)}")
+  
+  
+cls()
