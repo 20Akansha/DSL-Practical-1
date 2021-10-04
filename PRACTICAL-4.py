@@ -1,6 +1,6 @@
 Bal=0
 
-A=str(input("Enter transaction type and amount(format D 100 or W 120): "))
+A=str(input("Enter transaction Type and Amount: "))
 
 list=[]
 list=A.split()
