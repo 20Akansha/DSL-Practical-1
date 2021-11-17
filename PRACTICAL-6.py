@@ -1,4 +1,4 @@
-m=int(input('Enter m(row): '))
+m=int(input('Enter m(row): '))                               #sparse matrix
 n=int(input('Enter n(col): '))
 x=int(input('Enter j(row): '))
 y=int(input('Enter k(col): '))
