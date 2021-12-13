@@ -1,0 +1,94 @@
+#include <iostream>
+using namespace std;
+#define size 10
+
+class A1
+
+{
+    int top;
+    char stack[size];
+public:
+    A1()
+    {
+     top=-1;
+    }
+    void push(char);
+    char pop();
+    int isfull();
+    int isempty();
+};
+
+void A1::push(char x)
+{
+    top+=1;
+    stack[top]=x;
+}
+
+char A1::pop()
+
+{
+    char s;
+    s=stack[top];
+    top-=1;
+    return s;
+}
+
+int A1::isfull()
+
+{
+    if(top==size)
+        return 1;
+    else
+        return 0;
+}
+
+int A1::isempty()
+
+{
+    if(top==-1)
+        return 1;
+    else
+        return 0;
+}
+
+int main()
+
+{
+    A1 val;
+    char exp[20],ch;
+    int i=0;
+    cout<<"Enter expression to check whether it is well parenthesized or not :-  ";
+    cin>>exp;
+    if((exp[0]==')')||(exp[0]==']')||(exp[0]=='}'))
+    {
+        cout<<"Expression is invalid";
+        return 0;
+    }
+    else
+    {
+        while(exp[i]!='\0')
+        {
+            ch=exp[i];
+            switch(ch)
+            {
+            case '(':val.push(ch);break;
+            case '[':val.push(ch);break;
+            case '{':val.push(ch);break;
+            case ')':val.pop();break;
+            case ']':val.pop();break;
+            case '}':val.pop();break;
+            }
+            i+=1;
+        }
+    }
+    
+    if(val.isempty())
+    {
+        cout<<"The entered expression is well parenthesized";
+    }
+    else
+    {
+        cout<<"The entered expression is not well parenthesized";
+    }
+    return 0;
+}
