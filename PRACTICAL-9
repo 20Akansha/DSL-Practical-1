@@ -1,0 +1,168 @@
+                        //singly linked list
+#include<iostream>  
+#include<conio.h>
+#include<stdio.h>
+using namespace std;
+
+class node
+{
+	public:
+	int data;
+	struct node *next;
+};
+
+class linkedlist
+{
+	node *head ,*a , *b, *c, *d;
+	public:
+	int x,y,i;
+	
+	void createlist()
+	{
+		cout<<"Enter total PRN numbers: ";
+		cin>>x;
+		head = new (node);
+		cin>>head->data;
+		head->next=NULL;
+		a = head;
+		for(i=1;i<x;i++)
+		{
+			a->next = new (node);
+			a = a->next;
+			a -> next=NULL;
+			cin>>a->data;
+		}
+		
+	}
+	
+	void insertfirst()
+	{
+		int key;
+		cout<<"Enter the number to be inserted first: ";
+		cin>>key;
+				
+		node* newnode = new node();
+  		
+		newnode->data = key;
+  
+ 		newnode->next = head;
+  
+  		head = newnode;  
+  
+	}
+ 
+	void insertlast()
+	{
+		int key;
+		cout<<"Enter the number to be inserted at last: ";
+		cin>>key;
+				
+		node* newnode = new node();
+  		
+		newnode->data = key;
+  
+ 		newnode->next = head;
+  
+  		newnode->next = NULL; 
+      	if(head == NULL) 
+		{
+        	head = newnode;
+      	} 
+	  	else
+		{
+       		node* a = head;
+        	while(a->next != NULL)
+        	{
+          		a = a->next;
+         	}
+        		a->next = newnode;
+		}
+	}
+	
+	void delete_node()
+	{
+		int loc;
+		cout<<"Enter the location of the number to be deleted: "<<endl;
+		cin>>loc;
+		if (loc==1)
+		{
+			a = head;
+			head = head -> next;
+			free(a);
+		}
+		b = head;
+		for(i=1;i<loc-1;i++)
+		{
+			b = b->next;
+		}
+		if (b==NULL)
+		{
+			cout<<"Error occured..";
+		}
+		a = a->next;
+		b->next = a->next;
+		free(a);
+		
+		cout<<"The Number is deleted successfully..."<<endl;
+	}
+	
+	void inversion()
+	{
+
+    if(head != NULL)
+    {
+        b = head;
+        c = head->next;
+        head = head->next;
+
+        b->next = NULL; 
+
+        while(head != NULL)
+        {
+            head = head->next;
+            c->next = b;
+
+            b = c;
+            c = head;
+        }
+
+        head = b;
+	}
+}
+	
+	void display()
+	{
+		if (head == NULL)
+		{
+			cout<<"The list is empty"<<endl;
+		}
+		else
+		{
+			node *a = head;
+			cout<<"The linked List of PRN numbers is:- \n ";
+			while (a != NULL)
+			{
+				cout<<a->data;
+				a = a->next;
+				cout<<endl;
+			}
+		}
+	}
+	
+};
+
+int main()
+{
+	linkedlist l;
+	l.createlist();
+	l.display();
+	l.insertfirst();
+	l.display();
+	l.insertlast();
+	l.display();
+	l.inversion();
+	l.display();
+	l.delete_node();
+	l.display();
+	return 0;
+}
